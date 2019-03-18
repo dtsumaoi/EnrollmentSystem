@@ -452,6 +452,26 @@ public class EnrollmentSystem {
                         }
                         break;
                     case 3:
+                        System.out.print("+++++++++++++++ COURSES +++++++++++++++"
+                                + "\n[1]  - ADD A STUDENT TO COURSE"
+                                + "\n[2]  - REMOVE A STUDENT TO COURSE"
+                                + "\n[3]  - VIEW ALL COURSES OFFERED"
+                                + "\n[4]  - VIEW ALL COURSES WITH AVAILABLE SLOTS"
+                                + "\n[5]  - VIEW ALL COURSES WITHOUOT AVAILABLE SLOTS"
+                                + "\n[6]  - BACK"
+                                + "\nEnter Choice: ");
+                        switch (s.nextInt()) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                        }
                         break;
                     case 4:
                         break;
