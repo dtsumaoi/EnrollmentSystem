@@ -374,10 +374,46 @@ public class EnrollmentSystem {
                                 }
                                 break;
                             case 2:
+                                System.out.println("Input Student No. : ");
 
+                                try {
+                                    System.out.println("Successfully unenrolled " + school.removeStudent(s.nextInt()).getName() + ".");
+                                } catch (Exception e) {
+                                    System.out.println("Student not found");
+                                }
                                 break;
                             case 3:
+                                System.out.println("Input Student No. : ");
+                                int studNum = s.nextInt();
 
+                                for (Department department : school.getDepartmentList()) {
+                                    System.out.println(" > " + school.getDepartment(department.getDeptCode()).getDeptCode());
+                                }
+                                s.nextLine();
+                                System.out.print("Enter Department Code: ");
+                                try {
+                                    Department department = school.getDepartment(s.nextLine());
+                                    if (department.getProgramList().isEmpty()) {
+                                        System.out.println("No Programs found. Please create a program");
+                                    } else {
+                                        System.out.println("PROGRAMS IN " + department.getDeptName());
+                                        for (Program program : department.getProgramList()) {
+                                            int i = 1;
+                                            System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
+                                        }
+                                        System.out.println("Select a program: ");
+
+                                        try {
+                                            school.getStudent(studNum).setDegreeProgram(department.getProgramList().get(s.nextInt() - 1));
+                                            System.out.println("Program successfully updated!");
+                                        } catch (Exception e) {
+                                            System.out.println("Program update failed!");
+                                        }
+
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Error fetching department. Please try again");
+                                }
                                 break;
                             case 4:
 
