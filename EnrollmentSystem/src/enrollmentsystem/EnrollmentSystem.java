@@ -326,6 +326,46 @@ public class EnrollmentSystem {
                         }
                         break;
                     case 2:
+                        System.out.print("+++++++++++++++ PROGRAMS +++++++++++++++"
+                                + "\n[1]  - ENROLL STUDENT"
+                                + "\n[2]  - UNENROLL STUDENT"
+                                + "\n[3]  - CHANGE STUDENT PROGRAM"
+                                + "\n[4]  - DISPLAY PROGRAM DETAIL"
+                                + "\n[5]  - VIEW ALL PROGRAMS"
+                                + "\n[6]  - BACK"
+                                + "\nEnter Choice: ");
+                        switch (s.nextInt()) {
+                            case 1:
+
+                                if (school.getDepartmentList().isEmpty()) {
+                                    System.out.println("No department. Please create a department first");
+                                } else {
+                                    System.out.print("Enter Name: ");
+                                    String name = s.nextLine();
+                                    for (Department department : school.getDepartmentList()) {
+                                        System.out.println(department.getDeptName() + "Department");
+                                        for (Program program : department.getProgramList()) {
+                                            System.out.println(" [" + program.getProgramCode() + "] - " + program.getProgramDescription());
+                                        }
+                                    }
+                                    System.out.println("Select a Program: ");
+                                }
+                                break;
+                            case 2:
+
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+
+                                break;
+                            case 5:
+
+                                break;
+                            case 6:
+                                break;
+                        }
                         break;
                     case 3:
                         break;
