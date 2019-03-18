@@ -1,2 +1,2 @@
 # EnrollmentSystem
-Enrollment System
+Enrollment System Console Project
