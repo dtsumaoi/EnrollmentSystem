@@ -20,8 +20,16 @@ public class Student extends Person {
         this.degreeProgram = degreeProgram;
     }
 
-    public static int getStudId() {
+    public int getStudId() {
         return studId;
+    }
+
+    public static void setStudId(int studId) {
+        Student.studId = studId;
+    }
+
+    public void setStudentNo(int studentNo) {
+        this.studentNo = studId + studentNo;
     }
 
     public int getStudentNo() {

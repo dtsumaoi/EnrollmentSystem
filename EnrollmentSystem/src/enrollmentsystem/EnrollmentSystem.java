@@ -14,7 +14,8 @@ import java.util.Scanner;
 public class EnrollmentSystem {
 
     public static void main(String[] args) {
-
+        int students = 0;
+        int employees = 0;
         Scanner s = new Scanner(System.in);
 
         boolean finished = false;
@@ -359,7 +360,13 @@ public class EnrollmentSystem {
                                                 System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
                                             }
                                             System.out.println("Select a program: ");
-                                            school.addStudent(new Student(name, gender, department.getProgramList().get(s.nextInt() - 1)));
+                                            Student student = new Student(name, gender, department.getProgramList().get(s.nextInt() - 1));
+                                            student.setStudentNo(++students);
+                                            if (school.addStudent(student)) {
+                                                System.out.println("Student successfully enrolled!");
+                                            } else {
+                                                System.out.println("Student enrollment failed. Please try again.");
+                                            }
                                         }
                                     } catch (Exception e) {
                                         System.out.println("Error fetching department. Please try again");
