@@ -336,19 +336,34 @@ public class EnrollmentSystem {
                                 + "\nEnter Choice: ");
                         switch (s.nextInt()) {
                             case 1:
-
                                 if (school.getDepartmentList().isEmpty()) {
-                                    System.out.println("No department. Please create a department first");
+                                    System.out.println("No Departments found. Please create a department");
                                 } else {
-                                    System.out.print("Enter Name: ");
+                                    System.out.println("Enter name: ");
                                     String name = s.nextLine();
+                                    System.out.println("Enter gender: ");
+                                    char gender = s.nextLine().charAt(0);
                                     for (Department department : school.getDepartmentList()) {
-                                        System.out.println(department.getDeptName() + "Department");
-                                        for (Program program : department.getProgramList()) {
-                                            System.out.println(" [" + program.getProgramCode() + "] - " + program.getProgramDescription());
-                                        }
+                                        System.out.println(" > " + school.getDepartment(department.getDeptCode()).getDeptCode());
                                     }
-                                    System.out.println("Select a Program: ");
+                                    s.nextLine();
+                                    System.out.print("Enter Department Code: ");
+                                    try {
+                                        Department department = school.getDepartment(s.nextLine());
+                                        if (department.getProgramList().isEmpty()) {
+                                            System.out.println("No Programs found. Please create a program");
+                                        } else {
+                                            System.out.println("PROGRAMS IN " + department.getDeptName());
+                                            for (Program program : department.getProgramList()) {
+                                                int i = 1;
+                                                System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
+                                            }
+                                            System.out.println("Select a program: ");
+                                            school.addStudent(new Student(name, gender, department.getProgramList().get(s.nextInt() - 1)));
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Error fetching department. Please try again");
+                                    }
                                 }
                                 break;
                             case 2:
