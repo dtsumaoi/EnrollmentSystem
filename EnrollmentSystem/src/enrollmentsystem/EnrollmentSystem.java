@@ -359,7 +359,7 @@ public class EnrollmentSystem {
                                                 int i = 1;
                                                 System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
                                             }
-                                            System.out.println("Select a program: ");
+                                            System.out.print("Select a program: ");
                                             Student student = new Student(name, gender, department.getProgramList().get(s.nextInt() - 1));
                                             student.setStudentNo(++students);
                                             if (school.addStudent(student)) {
@@ -401,7 +401,7 @@ public class EnrollmentSystem {
                                             int i = 1;
                                             System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
                                         }
-                                        System.out.println("Select a program: ");
+                                        System.out.print("Select a program: ");
 
                                         try {
                                             school.getStudent(studNum).setDegreeProgram(department.getProgramList().get(s.nextInt() - 1));
@@ -416,10 +416,36 @@ public class EnrollmentSystem {
                                 }
                                 break;
                             case 4:
+                                for (Department department : school.getDepartmentList()) {
+                                    System.out.println(" > " + school.getDepartment(department.getDeptCode()).getDeptCode());
+                                }
+                                s.nextLine();
+                                System.out.print("Enter Department Code: ");
+                                try {
+                                    Department department = school.getDepartment(s.nextLine());
+                                    if (department.getProgramList().isEmpty()) {
+                                        System.out.println("No Programs found. Please create a program");
+                                    } else {
+                                        System.out.println("PROGRAMS IN " + department.getDeptName());
+                                        for (Program program : department.getProgramList()) {
+                                            int i = 1;
+                                            System.out.println("[" + i++ + "] " + department.getProgram(program.getProgramCode()).getProgramDescription());
+                                        }
+                                        System.out.print("Select a program: ");
 
+                                        System.out.println(department.getProgramList().get(s.nextInt() - 1).getProgramDescription());
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Error fetching department. Please try again");
+                                }
                                 break;
                             case 5:
-
+                                for (Department department : school.getDepartmentList()) {
+                                    System.out.println(school.getDepartment(department.getDeptCode()).getDeptName() + " DEPARTMENT");
+                                    for (Program program : department.getProgramList()) {
+                                        System.out.println(" > " + program.getProgramCode() + " " + program.getProgramDescription());
+                                    }
+                                }
                                 break;
                             case 6:
                                 break;
